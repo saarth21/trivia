@@ -1,27 +1,36 @@
 import tkinter as tk
-
+from tkinter import messagebox
 # window
 window  = tk.Tk()
 window.geometry("300x250")
 #Creating the backround
-questions = ["What is the capital of Georgia", "What is 10^4", "Which country is the largest in the world?"]
-choices = [["Cleveland","Douglas","Suwanee","Atlanta"],["10,000","10234","1000","4035"],["Germany","Usa","Russia","Brazil"]]
-anwsers = ["Atlanta","10,000","Russia"]
+questions = ["What is the capital of Georgia", "What is 10^4", "Which country is the largest in the world?", "What is starwberry in spanish"]
+choices = [["Cleveland","Douglas","Suwanee","Atlanta"],["10,000","10234","1000","4035"],["Germany","Usa","Russia","Brazil"],["fresa","cebolla","mochilla","roja"]]
+anwsers = ["Atlanta","10,000","Russia","fresa"]
 
 #varible- keeps track of question
 question_index = 0
 
+#score varible
+score = 0
 
 # Funtions that handles button press
-def buttonController():
+def buttonController(anwser):
+	# Work on next time - SCORING
 	global question_index
 	question_index +=1
+	if question_index == 4:
+		messagebox.showinfo("Quiz is complete","Your Score:")
+
 	#Config - change properties of a component
 	question_label.config(text=questions[question_index])
+	#button function
+	button_label1.config(text=choices[question_index][0])
+	button_label2.config(text=choices[question_index][1])
+	button_label3.config(text=choices[question_index][2])
+	button_label4.config(text=choices[question_index][3])
 
-#button function
-	button_label1.config(text=choices[question_index])
-	button_label2.config(text=choices[question_index])
+
 #Making questions
 question_label = tk.Label(window, text=questions[0])
 question_label.pack(pady=10)
